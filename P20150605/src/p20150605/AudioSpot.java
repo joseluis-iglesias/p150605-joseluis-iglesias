@@ -1,6 +1,32 @@
 package p20150605;
 
 import java.io.File;
+/** 
+ * 
+ * @author José Luis Iglesias Fernández
+ * 
+ * @version 1.0.1
+ * 
+ */
+
+/**
+ * 
+ * Declaración de las variables privadas.
+ * 
+ *archivo: manejador para el archivo que contiene el audio (.mp3).
+ * 
+ * duración: duración del audio, en segundos.
+ * 
+ * producto: nombre del producto anunciado.
+ * 
+ * anunciante: nombre de la empresa anunciante.
+ * 
+ * Declaración de la variable publica.
+ * 
+ * lasterrormsg: contiene la descripción del error relacionado con el código negativo devuelto.
+ * 
+ */
+
 
 public class AudioSpot
 {
@@ -10,6 +36,15 @@ public class AudioSpot
     private String anunciante;  // nombre de la empresa anunciante
     
     public String lasterrormsg;
+    /**
+     * 
+     * AudioSpot--- almacena metadatos de las diferentes cuñas de los anuncios publicitarios y los datos del 
+     * archivo que los contiene, permite programar la cuña dentro de una secuencia de audio clips y exportar 
+     * la cuña completa.
+     * 
+     * inicializa las variables.
+     * 
+     */
     
     public AudioSpot ()
     {
@@ -19,13 +54,26 @@ public class AudioSpot
         this.anunciante = "";
         this.lasterrormsg = "";
     }
-    
+    /**
+     * 
+     * setMetadatos--- introduce el nombre del producto y el nombre del anunciante.
+     * 
+     * @param producto
+     * 
+     * @param anunciante
+     */
     public void setMetaDatos (String producto, String anunciante)
     {
         this.producto = producto;
         this.anunciante = anunciante;
     }
-    
+    /**
+     * setDuracion--- introduce la duracion del archivo en cuestión, comprueba si la duración
+     *                es inferior a 0 o superior a 120.
+     * 
+     * @param duracion 
+     * @throws IllegalArgumentException 
+     */
     public void setDuracion(int duracion) throws IllegalArgumentException
     {
         if (duracion<0)
@@ -34,16 +82,28 @@ public class AudioSpot
             throw new IllegalArgumentException ("Duración demasiado larga");
         this.duracion = duracion;
     }
-    
+    /**
+     *setArchivo--- introduce el nombre del archivo en cuestion y comprueba si existe.
+     * 
+     * @param nombre_archivo
+     * @return archivo si existe. Devuelve true en ese caso.
+     */
     public Boolean setArchivo(String nombre_archivo)
     {
         this.archivo = new File(nombre_archivo);
         return this.archivo.exists();
     }
-    
+    /**
+     * ProgramaEnCola--- primero comprueba que no falte nada por introducir, tras ello  si todo ha ido bien comenzamos
+     *                   con la programación de la cola, la cual aún no esta implementada.
+     *                   
+     * 
+     * @param cola_reproduccion
+     * @return 
+     */
     public int ProgramaEnCola(Object cola_reproduccion)
     {
-        // comprobamos previamente que no falte nada
+        
         int resultado = 0;
         if (this.duracion==0)
         {
@@ -66,7 +126,7 @@ public class AudioSpot
             resultado = -4;
         }
         
-        // si todo va bien, programamos
+       
         if (resultado==0)
         {
             try
@@ -84,10 +144,15 @@ public class AudioSpot
         else
             return resultado;
     }
-    
+    /**
+     * ExportaAFormatoDAW--- comprueba que no falta nada en las variables, si todo va bien exportamos,
+     *                       falta la implementación para exportar el audio. 
+     * @param objeto_daw
+     * @return 
+     */
     public int ExportaAFormatoDAW(Object objeto_daw)
     {
-        // comprobamos previamente que no falte nada
+        
         int resultado = 0;
         if (this.duracion==0)
         {
@@ -110,12 +175,13 @@ public class AudioSpot
             resultado = -4;
         }
         
-        // si todo va bien, exportamos
+       
         if (resultado==0)
         {
             try
             {
                 // falta por implementar la exportación del audio
+                
                 lasterrormsg = "";
                 return 0;
             }
