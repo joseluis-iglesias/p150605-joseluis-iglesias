@@ -41,3 +41,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+#sin acceso a dist y a build
+/dist
+/build
+#sin acceso a archivos con extension mp3 o wav
+.mp3
+.wav
